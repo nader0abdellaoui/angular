@@ -1,0 +1,13 @@
+<h1>Ajouter une conférence</h1>
+@if (error) {
+  <p>{{ error }}</p>
+}
+<form [formGroup]="conferenceForm" (ngSubmit)="submitForm()">
+  <label>Titre <input formControlName="title"></label>
+  <label>Description <textarea formControlName="description"></textarea></label>
+  <label>Lieu <input formControlName="location"></label>
+  <label>Date <input type="date" formControlName="date"></label>
+  <label>Prix <input type="number" formControlName="price"></label>
+  <label>Nombre de places <input type="number" formControlName="nbPlaces"></label>
+  <button type="submit" [disabled]="conferenceForm.invalid">Ajouter</button>
+</form>

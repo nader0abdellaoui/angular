@@ -1,0 +1,38 @@
+@if (error) {
+  <p>{{ error }}</p>
+}
+
+@if (conference; as currentConference) {
+<div class="card">
+  <div class="card-header">
+    <span class="badge">CONFERENCE</span>
+    <h1>{{ currentConference.title || currentConference.name }}</h1>
+  </div>
+
+  <div class="card-body">
+    <div class="info">
+      <span class="icon">📅</span>
+      <div>
+        <span class="label">Date</span>
+        <p>{{ currentConference.date }}</p>
+      </div>
+    </div>
+
+    <div class="info">
+      <span class="icon">📍</span>
+      <div>
+        <span class="label">Place</span>
+        <p>{{ currentConference.location || currentConference.place }}</p>
+      </div>
+    </div>
+
+    <a (click)="goBack()" class="back-link">
+      ← Back to conferences
+    </a>
+    <a [routerLink]="['/update', currentConference.id]" class="back-link">
+      Modifier
+    </a>
+    <button type="button" (click)="deleteConference()">Supprimer</button>
+  </div>
+</div>
+}

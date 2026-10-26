@@ -1,0 +1,32 @@
+<h1>Conferences</h1>
+
+<a class="add-button" routerLink="/add">Ajouter une conférence</a>
+
+@if (error) {
+  <p>{{ error }}</p>
+}
+
+<div class="cards-container">
+  @for (conf of conferances; track $index) {
+    <div class="card">
+
+      <img
+        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87"
+        alt="Conference"
+      />
+
+      <div class="card-content">
+        <h2>{{ conferenceName(conf) }}</h2>
+
+        <p>📅 {{ conf.date }}</p>
+        <p>📍 {{ conf.location || conf.place }}</p>
+
+      </div>
+      <div class="card-actions">
+        <button [routerLink]="['/details', conf.id]">Details</button>
+        <button [routerLink]="['/update', conf.id]">Modifier</button>
+        <button class="delete-button" type="button" (click)="deleteConference(conf.id)">Supprimer</button>
+      </div>
+    </div>
+  }
+</div>
